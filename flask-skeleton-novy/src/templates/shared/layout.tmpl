@@ -1,0 +1,47 @@
+<style>
+table, td, th {
+        border: 1px solid black;
+    color: goldenrod;
+
+}
+        table {border-collapse: collapse;
+            border-color: goldenrod;
+            border-width: 4px;
+        width: 100%}
+th { height: 50px;}
+    body {background-color: black}
+
+</style>
+
+{% macro emit_css(bundle) %}
+  {% assets bundle %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+  {% endassets %}
+{% endmacro %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %} - Flask Skeleton</title>
+
+    {{ emit_css("css_all") }}
+
+    {% block styles %}
+      {# template-specific styles which are not included in bundle go here #}
+    {% endblock %}
+
+  </head>
+  <body>
+    {% include "shared/_navbar.tmpl" %}
+    <div class="container">
+      {% include "shared/flash.tmpl" %}
+      {% block content %}
+        {# page content goes here #}
+      {% endblock %}
+    </div>
+
+    {% block scripts %}
+      {# template-specific scripts which are not included in bundle go here #}
+    {% endblock %}
+  </body>
+</html>

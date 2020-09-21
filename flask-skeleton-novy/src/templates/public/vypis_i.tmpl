@@ -1,0 +1,18 @@
+
+
+{% from "macros/fields.tmpl" import render_input_field, render_submit %}
+{% extends "shared/layout.tmpl" %}
+
+{% block title %}LIST{% endblock %}
+
+{% block content %}
+
+ <table >
+    {% for n in data %}
+        <tr bgcolor="black"><td>{{ n[0] }}</td>
+        <td>{{ n[1] }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}
